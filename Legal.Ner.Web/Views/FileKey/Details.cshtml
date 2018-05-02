@@ -1,0 +1,52 @@
+﻿@model Legal.Ner.Domain.FileKey
+
+@{
+    ViewBag.Title = "Documento Detalle";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-body" >
+                <div>
+                    <h4>Documento</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <span>Nombre del archivo:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FileName)
+                        </dd>
+                        
+                        <dt>
+                            <span>Titulo del Documento:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DocumentTitle)
+                        </dd>
+                        <dt>
+                            <span>Fecha de publicación:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ReleaseDate)
+                        </dd>
+
+                        <dt>
+                            <span>Epígrafe:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Retornar al listado", "Index")
+                </p>
+            </div>
+        </div>
+    </div> 
+</div>
+

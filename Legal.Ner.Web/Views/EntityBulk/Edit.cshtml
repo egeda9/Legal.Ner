@@ -1,0 +1,58 @@
+﻿@model Legal.Ner.Domain.EntityBulk
+
+@{
+    ViewBag.Title = "Editar Entidad";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        @using (Html.BeginForm("Edit", "EntityBulk", FormMethod.Post, new {enctype = "multipart/form-data", @class="form-control-long"}))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <br/>
+                <h4>Editar Entidad</h4>
+                <hr/>
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                @Html.HiddenFor(model => model.Eid)
+                @Html.HiddenFor(model => model.FileKey.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EntityType)
+                    <div class="col-lg-10">
+                        @Html.EditorFor(model => model.EntityType, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.EntityType, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EntityName)
+                    <div class="col-lg-10">
+                        @Html.TextAreaFor(model => model.EntityName, 2, 50, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EntityName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Added)
+                    <div class="col-lg-10">
+                        @Html.CheckBoxFor(model => model.Added, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Added, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Guardar" class="btn btn-primary"/>
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Retornar al listado", "Index", new {fileKeyId = ViewBag.FileKeyId })
+                </div>
+            </div>
+        }
+    </div>
+</div>

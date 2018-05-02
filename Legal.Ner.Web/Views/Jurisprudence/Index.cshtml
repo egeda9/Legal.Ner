@@ -1,0 +1,189 @@
+﻿@model Legal.Ner.Domain.Graph.Jurisprudence
+
+@{
+    ViewBag.Title = "Crear Jurisprudencia";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        @using (Html.BeginForm("Create", "Jurisprudence", FormMethod.Post, new { @class = "form-control-long" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <br />
+            <h4>Crear Jurisprudencia</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Label)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.Label, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Label, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Uri)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.Uri, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Uri, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SourceClasses)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.SourceClasses, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SourceClasses, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasNumber)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasAnalyzedLegalAspect)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasAnalyzedLegalAspect, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasAnalyzedLegalAspect, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasDispatchName)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasDispatchName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasDispatchName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasExplanationThesis)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasExplanationThesis, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasExplanationThesis, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasExtract)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasExtract, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasExtract, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasLegalProblem)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasLegalProblem, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasLegalProblem, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasMagistrateSpeakerName)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasMagistrateSpeakerName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasMagistrateSpeakerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasMethod)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasMethod, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasMethod, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasPart)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasPart, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasPart, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasThesis)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasThesis, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasThesis, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasVoteClarification)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasVoteClarification, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasVoteClarification, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasVoteSalvage)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasVoteSalvage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasVoteSalvage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasBibliographicData)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasBibliographicData, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasBibliographicData, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasPublicationDate)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasPublicationDate, new { htmlAttributes = new { @class = "form-control date-picker" } })
+                    @Html.ValidationMessageFor(model => model.HasPublicationDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasSubject)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasSubject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasSubject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasTitle)
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(model => model.HasTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comment)
+                <div class="col-lg-10">
+                    @Html.TextAreaFor(model => model.Comment, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

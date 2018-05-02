@@ -1,0 +1,60 @@
+﻿@model Legal.Ner.Domain.EntityBulk
+
+@{
+    ViewBag.Title = "Entidad Detalle";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-body" >
+                <div>
+                    <h4>Entidad</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <span>Nombre del archivo:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FileKey.FileName)
+                        </dd>
+                        
+                        <dt>
+                            <span>Titulo del Documento:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FileKey.DocumentTitle)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Eid) <span>:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Eid)
+                        </dd>
+
+                        <dt>
+                            <span>Tipo de Entidad:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.EntityType)
+                        </dd>
+
+                        <dt>
+                            <span>Descripción de la Entidad:</span>
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.EntityName)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { eid = Model.Eid, fileKeyId = Model.FileKey.Id }) |
+                    @Html.ActionLink("Retornar al listado", "Index", new { fileKeyId = Model.FileKey.Id })
+                </p>
+            </div>
+        </div>
+    </div> 
+</div>
+

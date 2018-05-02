@@ -1,0 +1,19 @@
+﻿@model Legal.Ner.Domain.EntityBulk
+
+@{
+    ViewBag.Title = "Eliminar Entidad";
+}
+
+<h2>Eliminar Entidad</h2>
+
+<h3>¿Está seguro de eliminar la entidad @Model.EntityName</h3>
+<div>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" />
+            |
+            @Html.ActionLink("Retornar a listado", "Index")
+        </div>
+    }
+</div>

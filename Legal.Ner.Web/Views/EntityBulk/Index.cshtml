@@ -1,0 +1,99 @@
+﻿@using Legal.Ner.Domain;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<EntityBulk>
+
+@{
+    ViewBag.Title = "Entidades";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Entidades</h3>
+                            
+                            @{
+                                var modelBulk = Model.FirstOrDefault();
+
+                                if (modelBulk != null)
+                                {
+                                    <h5>Documento: @modelBulk.FileKey.DocumentTitle</h5>
+                                    <h5>Archivo: @modelBulk.FileKey.FileName</h5>
+                                }
+                            }
+                                
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="panel-body">
+                    
+                    @using (Html.BeginForm())
+                    {
+                        <p>
+                            Buscar por Entidad: @Html.TextBox("SearchString")  
+                            <input type="submit" value="Buscar" />
+                        </p>
+                    }
+
+                    <table id="entitiesTable" class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th>
+                                Eid
+                            </th>
+                            <th>
+                                Tipo de Entidad
+                            </th>
+                            <th>
+                                Nombre Entidad
+                            </th>
+                            <th>
+                                Agregado
+                            </th>
+                            <th>
+                                Acciones
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (EntityBulk item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Eid)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EntityType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EntityName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Added)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new {eid = item.Eid, fileKeyId = item.FileKey.Id}) |
+                                    @Html.ActionLink("Detalle", "Details", new {eid = item.Eid, fileKeyId = item.FileKey.Id}) |
+                                    @Html.ActionLink("Eliminar", "Delete", new {eid = item.Eid, fileKeyId = item.FileKey.Id})
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <br/>
+                    <span>Página</span> @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) <span>de</span> @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new {page = page, searchString = ViewBag.SearchString, fileKeyId = @ViewBag.FileKeyId }), new PagedListRenderOptions {DelimiterBetweenPageNumbers = "|", LinkToFirstPageFormat = "<< Primera", LinkToPreviousPageFormat = "< Anterior", LinkToNextPageFormat = "Siguiente >", LinkToLastPageFormat = "Ultima >>"})
+                </div>
+            </div>
+        <div>
+            @Html.ActionLink("Retornar al listado de documentos", "Index", "FileKey")
+        </div>
+        </div>
+    </div>
+</div>
