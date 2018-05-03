@@ -5,16 +5,19 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Legal.Ner.DataAccess.Interfaces;
+using Neo4j.Driver.V1;
 
 namespace Legal.Ner.DataAccess.Implementations
 {
     public class TreeData : ITreeData
     {
-        private readonly IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
+        private readonly IDbConnection _db;
+        private readonly ILogger _logger;
 
-        public TreeData()
+        public TreeData(ILogger logger)
         {
-            
+            _logger = logger;
+            _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
         }
 
         public int Insert(int fileKeyId)
@@ -28,7 +31,7 @@ namespace Legal.Ner.DataAccess.Implementations
             }
             catch (Exception ex)
             {
-
+                _logger.Error(ex.Message, ex);
             }
             return result;
         }

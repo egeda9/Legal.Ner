@@ -6,15 +6,19 @@ using System.Data.SqlClient;
 using Dapper;
 using Legal.Ner.DataAccess.Interfaces;
 using Legal.Ner.Domain;
+using Neo4j.Driver.V1;
 
 namespace Legal.Ner.DataAccess.Implementations
 {
     public class EntityData : IEntityData
     {
-        private readonly IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
+        private readonly IDbConnection _db;
+        private readonly ILogger _logger;
 
-        public EntityData()
+        public EntityData(ILogger logger)
         {
+            _logger = logger;
+            _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
         }
 
         public void Insert(List<Entity> entities, int fileKeyId)
@@ -35,7 +39,7 @@ namespace Legal.Ner.DataAccess.Implementations
 
             catch (Exception ex)
             {
-                
+                _logger.Error(ex.Message, ex);
             }
         }
     }

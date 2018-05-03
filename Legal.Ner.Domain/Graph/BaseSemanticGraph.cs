@@ -13,12 +13,11 @@ namespace Legal.Ner.Domain.Graph
         public long Id { get; set; }
         [JsonProperty(PropertyName = "comment")]
         public string Comment { get; set; }
-        [JsonProperty(PropertyName = "nodeLabels")]
-        public string NodeLabels { get; set; }
+        [JsonProperty(PropertyName = "namespace")]
+        public string Namespace { get; set; }
 
         [JsonIgnore]
-        [Display(Name = "Clases de Origen")]
-        public string SourceClasses { get; set; }
+        public string Classes { get; set; }
         [JsonIgnore]
         public string Filter { get; set; }
 

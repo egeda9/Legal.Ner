@@ -35,10 +35,10 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.SourceClasses)
+                @Html.LabelFor(model => model.Namespace)
                 <div class="col-lg-10">
-                    @Html.TextBoxFor(model => model.SourceClasses, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.SourceClasses, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Namespace, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Namespace, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -59,26 +59,26 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.HasLiteral)
+                @Html.LabelFor(model => model.HasLiteralValue)
                 <div class="col-lg-10">
-                    @Html.TextBoxFor(model => model.HasLiteral, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HasLiteral, "", new { @class = "text-danger" })
+                    @Html.TextAreaFor(model => model.HasLiteralValue, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasLiteralValue, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.HasIncese)
+                @Html.LabelFor(model => model.HasInceseValue)
                 <div class="col-lg-10">
-                    @Html.TextBoxFor(model => model.HasIncese, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HasIncese, "", new { @class = "text-danger" })
+                    @Html.TextAreaFor(model => model.HasInceseValue, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasInceseValue, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.HasNumeral)
+                @Html.LabelFor(model => model.HasNumeralValue)
                 <div class="col-lg-10">
-                    @Html.TextBoxFor(model => model.HasNumeral, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HasNumeral, "", new { @class = "text-danger" })
+                    @Html.TextAreaFor(model => model.HasNumeralValue, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasNumeralValue, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -95,6 +95,14 @@
                 <div class="col-lg-10">
                     @Html.TextAreaFor(model => model.HasSection, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.HasSection, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasSubject)
+                <div class="col-lg-10">
+                    @Html.TextAreaFor(model => model.HasSubject, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HasSubject, "", new { @class = "text-danger" })
                 </div>
             </div>
 

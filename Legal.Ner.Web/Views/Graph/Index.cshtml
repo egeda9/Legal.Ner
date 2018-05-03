@@ -20,17 +20,11 @@
 
             <input type="hidden" id="hdnSourceLabel" name="SourceLabel" />
             <input type="hidden" id="hdnTargetLabel" name="TargetLabel" />
-            
-            @{
-                var selectedSource = Model.Sources.FirstOrDefault();
-                var selectedTarget = Model.Targets.FirstOrDefault();
-            }
-            
 
             <div class="form-group">
                 @Html.LabelFor(model => model.SelectedSource)
-                <div class="col-lg-10">
-                    @Html.DropDownListFor(x => Model.SelectedSource, new SelectList(Model.Sources, "NodeLabels", "Label"), htmlAttributes: new { @class = "form-control", id = "ddlSource" })
+                <div class="col-lg-12">
+                    @Html.DropDownListFor(x => Model.SelectedSource, Model.Sources, htmlAttributes: new { @class = "form-control", id = "ddlSource" })
                     @Html.ValidationMessageFor(model => model.SelectedSource, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -46,7 +40,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.SelectedTarget)
                 <div class="col-lg-10">
-                    @Html.DropDownListFor(x => Model.SelectedTarget, new SelectList(Model.Targets, "NodeLabels", "Label"), htmlAttributes: new { @class = "form-control", id = "ddlTarget" })
+                    @Html.DropDownListFor(x => Model.SelectedTarget, Model.Targets, htmlAttributes: new { @class = "form-control", id = "ddlTarget" })
                     @Html.ValidationMessageFor(model => model.SelectedTarget, "", new { @class = "text-danger" })
                 </div>
             </div>

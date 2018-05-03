@@ -32,7 +32,7 @@ namespace Legal.Ner.Web.Controllers
                 Jurisprudence jurisprudence = new Jurisprudence
                 {
                     Label = collection["Label"],
-                    SourceClasses = collection["SourceClasses"],
+                    Namespace = collection["Namespace"],
                     Uri = collection["Uri"],
                     HasNumber = Convert.ToInt32(collection["HasNumber"]),
                     HasAnalyzedLegalAspect = collection["HasAnalyzedLegalAspect"],
@@ -49,7 +49,8 @@ namespace Legal.Ner.Web.Controllers
                     HasThesis = collection["HasThesis"],
                     HasTitle = collection["HasTitle"],
                     HasVoteClarification = collection["HasVoteClarification"],
-                    HasVoteSalvage = collection["HasVoteSalvage"]
+                    HasVoteSalvage = collection["HasVoteSalvage"],
+                    Comment = collection["Comment"]
                 };
 
                 _graphData.CreateNode(jurisprudence);

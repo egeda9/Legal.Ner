@@ -34,10 +34,18 @@ namespace Legal.Ner.Web.Controllers
 
             individuals = individuals.OrderBy(x => x.Label).ToList();
 
+            var individualsList = individuals.Select(x => new
+            {
+                Id = x.Namespace,
+                Text = x.Label + "$" + x.Uri
+            });
+
+            var individualSelectList = new SelectList(individualsList, "Id", "Text");
+
             GraphRelationViewModel graphRelation = new GraphRelationViewModel
             {
-                Sources = individuals,
-                Targets = individuals,
+                Sources = individualSelectList,
+                Targets = individualSelectList,
                 ObjectProperties = objectProperties
             };
 
@@ -77,7 +85,8 @@ namespace Legal.Ner.Web.Controllers
                 {
                     Label = collection["Label"],
                     Uri = collection["Uri"],
-                    SourceClasses = collection["SourceClasses"]
+                    Namespace = collection["Namespace"],
+                    Comment = collection["Comment"]
                 };
 
                 _graphData.CreateNode(graph);
@@ -108,7 +117,7 @@ namespace Legal.Ner.Web.Controllers
                     Label = collection["Label"],
                     Uri = collection["Uri"],
                     Filter = collection["Filter"],
-                    SourceClasses = collection["SourceClasses"]
+                    Namespace = collection["Namespace"]
                 };
 
                 _graphData.UpdateUriNode(graph);
@@ -137,7 +146,7 @@ namespace Legal.Ner.Web.Controllers
                 BaseSemanticGraph graph = new BaseSemanticGraph
                 {
                     Label = collection["Label"],
-                    SourceClasses = collection["SourceClasses"]
+                    Namespace = collection["Namespace"]
                 };
 
                 _graphData.DeleteNode(graph);

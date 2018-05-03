@@ -32,10 +32,11 @@ namespace Legal.Ner.Web.Controllers
                 DocumentPart documentPart = new DocumentPart
                 {
                     Label = collection["Label"],
-                    SourceClasses = collection["SourceClasses"],
+                    Namespace = collection["Namespace"],
                     Uri = collection["Uri"],
                     HasNumber = Convert.ToInt32(collection["HasNumber"]),
-                    HasDescription = collection["HasDescription"]
+                    HasDescription = collection["HasDescription"],
+                    Comment = collection["Comment"]
                 };
 
                 _graphData.CreateNode(documentPart);

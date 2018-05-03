@@ -33,7 +33,9 @@ namespace Legal.Ner.DataAccess.Implementations
                     Label = node.Node.Label,
                     Uri = node.Node.Uri,
                     Id = node.Id,
-                    NodeLabels = string.Join(":", node.NodeLabels)
+                    Comment = node.Node.Comment,
+                    Namespace = node.Node.Namespace,
+                    Classes = string.Join(":", node.NodeLabels)
                 };
                 semanticGraphs.Add(semanticGraph);
             }
@@ -42,7 +44,7 @@ namespace Legal.Ner.DataAccess.Implementations
 
         public void CreateNode(BaseSemanticGraph baseSemanticGraph)
         {
-            string dependencies = $"(n:{baseSemanticGraph.SourceClasses}";
+            string dependencies = $"(n:{baseSemanticGraph.Namespace}";
 
             _graphClient.Cypher
                 .Create(dependencies + "{baseSemanticGraph})")
@@ -50,23 +52,27 @@ namespace Legal.Ner.DataAccess.Implementations
                 .ExecuteWithoutResults();
         }
 
-        public void RelateNodes(string sourceMatch, string targetMatch, string relation, string sourceFilter, string targetFilter)
+        public void RelateNodes(string sourceMatch, string targetMatch, string relation, string sourceFilters, string targetFilters)
         {
-            if (string.IsNullOrEmpty(sourceFilter) || string.IsNullOrEmpty(targetFilter))
+            if (string.IsNullOrEmpty(sourceFilters) || string.IsNullOrEmpty(targetFilters))
                 return;
+
+            string relationship = relation.Split('#')[1];
+            string sourceFilter = sourceFilters.Split('$')[0];
+            string targetFilter = targetFilters.Split('$')[0];
 
             _graphClient.Cypher
                 .Match($"(s:{sourceMatch})", $"(t:{targetMatch})")
-                .Where((BaseSemanticGraph nodeSource) => nodeSource.Label == sourceFilter)
-                .AndWhere((BaseSemanticGraph nodeTarget) => nodeTarget.Label == targetFilter)
-                .Create($"s-[:{relation}]->t")
+                .Where((BaseSemanticGraph s) => s.Label == sourceFilter)
+                .AndWhere((BaseSemanticGraph t) => t.Label == targetFilter)
+                .Create($"(s)-[:{relationship}]->(t)")
                 .ExecuteWithoutResults();
         }
 
         public void DeleteNode(BaseSemanticGraph baseSemanticGraph)
         {
             _graphClient.Cypher
-                .Match($"(s:{baseSemanticGraph.SourceClasses})")
+                .Match($"(s:{baseSemanticGraph.Namespace})")
                 .Where((BaseSemanticGraph s) => s.Label == baseSemanticGraph.Label)
                 .Delete("s")
                 .ExecuteWithoutResults();
@@ -75,7 +81,7 @@ namespace Legal.Ner.DataAccess.Implementations
         public void UpdateUriNode(BaseSemanticGraph baseSemanticGraph)
         {
             _graphClient.Cypher
-                .Match($"(s:{baseSemanticGraph.SourceClasses})")
+                .Match($"(s:{baseSemanticGraph.Namespace})")
                 .Where((BaseSemanticGraph s) => s.Label == baseSemanticGraph.Filter)
                 .Set("s = {graph}")
                 .WithParam("graph", baseSemanticGraph)

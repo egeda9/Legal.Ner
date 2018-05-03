@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using Legal.Ner.Domain.Graph;
 
 namespace Legal.Ner.Web.Models
@@ -9,7 +10,7 @@ namespace Legal.Ner.Web.Models
         [Required]
         [Display(Name = "Origen")]
         public string SelectedSource { get; set; }
-        public IEnumerable<BaseSemanticGraph> Sources { get; set; }
+        public SelectList Sources { get; set; }
 
         [Required]
         [Display(Name = "Object property")]
@@ -19,6 +20,6 @@ namespace Legal.Ner.Web.Models
         [Required]
         [Display(Name = "Destino")]
         public string SelectedTarget { get; set; }
-        public IEnumerable<BaseSemanticGraph> Targets { get; set; }
+        public SelectList Targets { get; set; }
     }
 }

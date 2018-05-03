@@ -6,15 +6,19 @@ using System.Data.SqlClient;
 using Dapper;
 using Legal.Ner.DataAccess.Interfaces;
 using Legal.Ner.Domain;
+using Neo4j.Driver.V1;
 
 namespace Legal.Ner.DataAccess.Implementations
 {
     public class NonTerminalData :INonTerminalData
     {
-        private readonly IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
+        private readonly IDbConnection _db;
+        private readonly ILogger _logger;
 
-        public NonTerminalData()
+        public NonTerminalData(ILogger logger)
         {
+            _logger = logger;
+            _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
         }
 
         public void Insert(List<NonTerminal> nonTerminals, int fileKeyId, int treeId)
@@ -29,6 +33,7 @@ namespace Legal.Ner.DataAccess.Implementations
 
             catch (Exception ex)
             {
+                _logger.Error(ex.Message, ex);
             }
         }
     }

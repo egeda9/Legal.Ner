@@ -32,7 +32,7 @@ namespace Legal.Ner.Web.Controllers
                 LegislativeAct legislativeAct = new LegislativeAct
                 {
                     Label = collection["Label"],
-                    SourceClasses = collection["SourceClasses"],
+                    Namespace = collection["Namespace"],
                     Uri = collection["Uri"],
                     HasApproval = collection["HasApproval"],
                     HasBibliographicData = collection["HasBibliographicData"],
@@ -47,7 +47,8 @@ namespace Legal.Ner.Web.Controllers
                     HasPublicationDate = string.IsNullOrEmpty(collection["HasPublicationDate"]) ? DateTime.MinValue : Convert.ToDateTime(collection["HasPublicationDate"]),
                     HasSaction = collection["HasSaction"],
                     HasSubject = collection["HasSubject"],
-                    HasTitle = collection["HasTitle"]
+                    HasTitle = collection["HasTitle"],
+                    Comment = collection["Comment"]
                 };
 
                 _graphData.CreateNode(legislativeAct);

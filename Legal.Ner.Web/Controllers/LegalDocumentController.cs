@@ -32,13 +32,14 @@ namespace Legal.Ner.Web.Controllers
                 LegalDocument legalDocument = new LegalDocument
                 {
                     Label = collection["Label"],
-                    SourceClasses = collection["SourceClasses"],
+                    Namespace = collection["Namespace"],
                     Uri = collection["Uri"],
                     HasBibliographicData = collection["HasBibliographicData"],
                     HasNumber = Convert.ToInt32(collection["HasNumber"]),
                     HasPublicationDate = string.IsNullOrEmpty(collection["HasPublicationDate"]) ? DateTime.MinValue : Convert.ToDateTime(collection["HasPublicationDate"]),
                     HasSubject = collection["HasSubject"],
-                    HasTitle = collection["HasTitle"]
+                    HasTitle = collection["HasTitle"],
+                    Comment = collection["Comment"]
                 };
 
                 _graphData.CreateNode(legalDocument);

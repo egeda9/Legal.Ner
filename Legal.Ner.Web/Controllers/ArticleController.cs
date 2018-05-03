@@ -32,15 +32,17 @@ namespace Legal.Ner.Web.Controllers
                 Article article = new Article
                 {
                     Label = collection["Label"],
-                    SourceClasses = collection["SourceClasses"],
+                    Namespace = collection["Namespace"],
                     Uri = collection["Uri"],
                     HasDescription = collection["HasDescription"],
-                    HasIncese = collection["HasIncese"],
-                    HasLiteral = collection["HasLiteral"],
-                    HasNumeral = Convert.ToInt32(collection["HasNumeral"]),
+                    HasIncese = collection["HasInceseValue"].Split('%'),
+                    HasLiteral = collection["HasLiteralValue"].Split('%'),
+                    HasNumeral = collection["HasNumeralValue"].Split('%'),
                     HasNumber = Convert.ToInt32(collection["HasNumber"]),
                     HasParagraph = collection["HasParagraph"],
-                    HasSection = collection["HasSection"]
+                    HasSection = collection["HasSection"],
+                    Comment = collection["Comment"],
+                    HasSubject = collection["HasSubject"]
                 };
 
                 _graphData.CreateNode(article);
