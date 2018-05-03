@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Legal.Ner.DataAccess.Interfaces;
-using Neo4j.Driver.V1;
+using Legal.Ner.Log;
 
 namespace Legal.Ner.DataAccess.Implementations
 {

@@ -99,6 +99,10 @@
       <Project>{547461cd-90c7-4a26-8e32-e9632e6c5476}</Project>
       <Name>Legal.Ner.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Legal.Ner.Log\Legal.Ner.Log.csproj">
+      <Project>{85c00da3-3d22-49ee-8d49-f7d8571205a7}</Project>
+      <Name>Legal.Ner.Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SPARQL.NET\SPARQL.NET.csproj">
       <Project>{5a32cbe1-cc36-481b-9db1-b2d8ff9e7a6c}</Project>
       <Name>SPARQL.NET</Name>
