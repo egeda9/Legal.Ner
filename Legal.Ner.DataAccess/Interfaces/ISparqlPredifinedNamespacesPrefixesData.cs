@@ -5,6 +5,6 @@ namespace Legal.Ner.DataAccess.Interfaces
 {
     public interface ISparqlPredifinedNamespacesPrefixesData
     {
-        IList<SparqlPredefinedNamespacePrefixes> Get();
+        IList<SparqlPredefinedNamespacePrefix> Get();
     }
 }

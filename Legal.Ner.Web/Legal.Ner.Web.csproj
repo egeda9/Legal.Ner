@@ -182,20 +182,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\DocumentPartController.cs" />
     <Compile Include="Controllers\EntityBulkController.cs" />
     <Compile Include="Controllers\FileKeyController.cs" />
-    <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JurisprudenceController.cs" />
-    <Compile Include="Controllers\LegalDocumentController.cs" />
-    <Compile Include="Controllers\LegislativeActController.cs" />
     <Compile Include="Controllers\SemanticController.cs" />
+    <Compile Include="Controllers\SparqlPredefinedNamespacePrefixController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GraphRelationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -311,18 +305,12 @@
     <Content Include="Views\FileKey\Index.cshtml" />
     <Content Include="Views\EntityBulk\Delete.cshtml" />
     <Content Include="Views\Semantic\Index.cshtml" />
-    <Content Include="Views\Graph\Create.cshtml" />
-    <Content Include="Views\Graph\Edit.cshtml" />
-    <Content Include="Views\Graph\Delete.cshtml" />
-    <Content Include="Views\Graph\Index.cshtml" />
-    <Content Include="Views\LegalDocument\Index.cshtml" />
-    <Content Include="Views\LegislativeAct\Index.cshtml" />
-    <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\DocumentPart\Index.cshtml" />
-    <Content Include="Views\Jurisprudence\Index.cshtml" />
+    <Content Include="Views\SparqlPredefinedNamespacePrefix\Index.cshtml" />
+    <Content Include="Views\Semantic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

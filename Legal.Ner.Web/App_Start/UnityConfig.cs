@@ -29,7 +29,6 @@ namespace Legal.Ner.Web
             container.RegisterType<ITreeEdgeData, TreeEdgeData>();
             container.RegisterType<IWordData, WordData>();
             container.RegisterType<IProcessFile, ProcessFile>();
-            container.RegisterType<IGraphData, GraphData>();
             container.RegisterType<ISparqlData, SparqlData>();
             container.RegisterType<ISparqlPredifinedNamespacesPrefixesData, SparqlPredifinedNamespacesPrefixesData>();
             container.RegisterType<ILogger, Logger>();

@@ -68,7 +68,7 @@ namespace SPARQLNET.Misc
             {
                 StringBuilder sb = new StringBuilder();
 
-                sb.AppendLine("<table width=\"" + tableWidth + "\">");
+                sb.AppendLine("<table border=\"1\" width=\"" + tableWidth + "\">");
 
                 sb.AppendLine("<tr>");
                 string[] columns = table.Columns.ToArray();

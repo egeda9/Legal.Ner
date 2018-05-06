@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 300px;
+    max-width: 1000px;
 }
 
 .panel-table .panel-body{
@@ -78,4 +78,8 @@ used to vertically center elements, may need modification if you're not using de
 
 .form-control-long {
     width: 2000px;
+}
+
+.form-with {
+    max-width:1000px
 }

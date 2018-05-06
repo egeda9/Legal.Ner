@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotNetRDF">
+      <HintPath>..\Legal.Ner.Web\Bin\dotNetRDF.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -47,18 +50,15 @@
   <ItemGroup>
     <Compile Include="Entity.cs" />
     <Compile Include="EntityBulk.cs" />
+    <Compile Include="Extensions\DataTableExtension.cs" />
+    <Compile Include="Extensions\SparqlResultSetExtension.cs" />
     <Compile Include="FileContent.cs" />
     <Compile Include="FileKey.cs" />
-    <Compile Include="Graph\Article.cs" />
-    <Compile Include="Graph\BaseSemanticGraph.cs" />
-    <Compile Include="Graph\DocumentPart.cs" />
-    <Compile Include="Graph\Jurisprudence.cs" />
-    <Compile Include="Graph\LegalDocument.cs" />
-    <Compile Include="Graph\LegislativeAct.cs" />
-    <Compile Include="Metadata\SparqlPredefinedNamespacePrefixes.cs" />
+    <Compile Include="Metadata\SparqlPredefinedNamespacePrefix.cs" />
     <Compile Include="NonTerminal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticSearch.cs" />
+    <Compile Include="Semantic\QueryOutput.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="Terminal.cs" />
     <Compile Include="Tree.cs" />
@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SPARQL.NET\SPARQL.NET.csproj">
+      <Project>{5A32CBE1-CC36-481B-9DB1-B2D8FF9E7A6C}</Project>
+      <Name>SPARQL.NET</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

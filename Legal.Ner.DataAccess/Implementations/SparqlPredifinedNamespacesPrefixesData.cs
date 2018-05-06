@@ -11,11 +11,11 @@ namespace Legal.Ner.DataAccess.Implementations
 {
     public class SparqlPredifinedNamespacesPrefixesData : ISparqlPredifinedNamespacesPrefixesData
     {
-        public IList<SparqlPredefinedNamespacePrefixes> Get()
+        public IList<SparqlPredefinedNamespacePrefix> Get()
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
             {
-                return db.Query<SparqlPredefinedNamespacePrefixes>("SELECT * FROM metadata.PredefinedNamespacePrefixes").ToList();
+                return db.Query<SparqlPredefinedNamespacePrefix>("SELECT * FROM metadata.PredefinedNamespacePrefixes").ToList();
             }
         }
     }

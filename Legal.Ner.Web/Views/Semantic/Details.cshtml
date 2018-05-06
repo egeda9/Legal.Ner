@@ -1,0 +1,28 @@
+﻿@model Legal.Ner.Domain.Semantic.QueryOutput
+
+@{
+    ViewBag.Title = "Resultado de la consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Resultado de la consulta</h3>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="panel-body">
+                    @Html.Raw(Model.Output)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

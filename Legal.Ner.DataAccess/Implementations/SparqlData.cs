@@ -1,37 +1,37 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+using System.Data;
 using Legal.Ner.DataAccess.Interfaces;
-using Legal.Ner.Domain.Graph;
-using Legal.Ner.Domain.Metadata;
-using SPARQLNET;
-using SPARQLNET.Enums;
+using Legal.Ner.Domain.Extensions;
+using Legal.Ner.Log;
+using VDS.RDF.Query;
+using VDS.RDF.Storage;
 
 namespace Legal.Ner.DataAccess.Implementations
 {
     public class SparqlData : ISparqlData
     {
-        private const string DbpediaEndpoint = "http://es.dbpedia.org/sparql";
-        private readonly QueryClient _client;
-        private readonly ISparqlPredifinedNamespacesPrefixesData _predifinedNamespaces;
+        private readonly ILogger _logger;
+        private readonly FusekiConnector _connector;
 
-        public SparqlData(ISparqlPredifinedNamespacesPrefixesData predifinedNamespaces)
+        public SparqlData(ILogger logger)
         {
-            _predifinedNamespaces = predifinedNamespaces;
-            _client = new QueryClient(DbpediaEndpoint);
+            _logger = logger;
+            _connector = new FusekiConnector("http://localhost:3030/ontologia-legal-colombia/data");
         }
 
-        public void Get(BaseSemanticGraph baseSemanticGraph)
+        public string Get(string query)
         {
-            IList<SparqlPredefinedNamespacePrefixes> predefinedNamespaces = _predifinedNamespaces.Get();
-            StringBuilder prefixes = new StringBuilder();
-
-            foreach (var predefinedNamespace in predefinedNamespaces)
-                prefixes.Append($"PREFIX {predefinedNamespace.Prefix}: <{predefinedNamespace.Uri}> ");
-
-            //Create a query that finds people who were born in Berlin before 1900
-            var result = _client.Query(prefixes + " SELECT ?person WHERE{ ?person dbpedia-owl:wikiPageWikiLink <" + baseSemanticGraph.Uri + ">}");
+            string output = null;
+            try
+            {
+                var result = (SparqlResultSet) _connector.Query(query);
+                output = result.ToDataTable().ToHtml();
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e.Message, e);
+            }
+            return output;
         }
     }
 }
