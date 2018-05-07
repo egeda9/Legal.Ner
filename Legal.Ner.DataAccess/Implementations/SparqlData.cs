@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Data;
+using System.Configuration;
 using Legal.Ner.DataAccess.Interfaces;
 using Legal.Ner.Domain.Extensions;
-using Legal.Ner.Log;
 using VDS.RDF.Query;
 using VDS.RDF.Storage;
 
@@ -10,26 +9,24 @@ namespace Legal.Ner.DataAccess.Implementations
 {
     public class SparqlData : ISparqlData
     {
-        private readonly ILogger _logger;
         private readonly FusekiConnector _connector;
 
-        public SparqlData(ILogger logger)
+        public SparqlData()
         {
-            _logger = logger;
-            _connector = new FusekiConnector("http://localhost:3030/ontologia-legal-colombia/data");
+            _connector = new FusekiConnector(ConfigurationManager.AppSettings["FusekiBaseUri"]);
         }
 
         public string Get(string query)
         {
-            string output = null;
+            string output;
             try
             {
                 var result = (SparqlResultSet) _connector.Query(query);
-                output = result.ToDataTable().ToHtml();
+                output     = result.ToDataTable().ToHtml();
             }
             catch (Exception e)
             {
-                _logger.Error(e.Message, e);
+                throw new InvalidOperationException(e.Message, e);
             }
             return output;
         }

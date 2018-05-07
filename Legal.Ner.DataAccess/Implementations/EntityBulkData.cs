@@ -11,10 +11,17 @@ namespace Legal.Ner.DataAccess.Implementations
 {
     public class EntityBulkData : IEntityBulkData
     {
+        private readonly IDbConnection _db;
+
+        public EntityBulkData()
+        {
+            _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString);
+        }
+
         public List<EntityBulk> Get(int fileKeyId, string searchString)
         {
             List<EntityBulk> entities;
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
+            using (IDbConnection db = _db)
             {
                 db.Open();
                 string filterString = !string.IsNullOrEmpty(searchString) ? "AND e.EntityName LIKE CONCAT('%',@SearchString,'%')" : string.Empty;
@@ -45,7 +52,7 @@ namespace Legal.Ner.DataAccess.Implementations
         public EntityBulk GetByEid(string eid, int fileKeyId)
         {
             EntityBulk entity;
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
+            using (IDbConnection db = _db)
             {
                 db.Open();
                 string sql = "SELECT e.Eid" +
@@ -74,7 +81,7 @@ namespace Legal.Ner.DataAccess.Implementations
 
         public void Update(EntityBulk entityBulk)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
+            using (IDbConnection db = _db)
             {
                 db.Open();
                 string sql = "UPDATE EntityBulk" +

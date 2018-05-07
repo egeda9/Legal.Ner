@@ -48,7 +48,7 @@ namespace Legal.Ner.DataAccess.Implementations
         public List<FileKey> Get(string searchString)
         {
             List<FileKey> files;
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
+            using (IDbConnection db = _db)
             {
                 db.Open();
                 string filterString = !string.IsNullOrEmpty(searchString) ? "WHERE f.DocumentTitle LIKE CONCAT('%',@SearchString,'%')" : string.Empty;
@@ -72,7 +72,7 @@ namespace Legal.Ner.DataAccess.Implementations
         public FileKey Get(int id)
         {
             FileKey fileKey;
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
+            using (IDbConnection db = _db)
             {
                 db.Open();
                 string sql = "SELECT f.Id" +
@@ -93,7 +93,7 @@ namespace Legal.Ner.DataAccess.Implementations
 
         public void Update(FileKey fileKey)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString))
+            using (IDbConnection db = _db)
             {
                 db.Open();
                 string sql = "UPDATE FileKey" +

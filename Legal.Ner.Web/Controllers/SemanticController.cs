@@ -28,6 +28,7 @@ namespace Legal.Ner.Web.Controllers
         [ValidateInput(false)]
         public ActionResult Index(FormCollection collection)
         {
+            ViewBag.ErrorMessage = string.Empty;
             try
             {
                 string query = collection["Query"];
@@ -41,6 +42,7 @@ namespace Legal.Ner.Web.Controllers
             }
             catch(Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 _logger.Error(ex.Message, ex);
             }
             return View();
