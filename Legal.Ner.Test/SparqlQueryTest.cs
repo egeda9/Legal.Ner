@@ -27,7 +27,7 @@ namespace Legal.Ner.Test
                            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
                            "PREFIX olc: <http://www.semanticweb.org/ontologia-legal-colombia#> " +
                            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-                           "SELECT ?documento WHERE { ?documento rdf:type olc:ACTO_LEGISLATIVO } ";
+                           "SELECT ?documento WHERE { ?documento rdf:type olc:PARTE_DOCUMENTO } ";
 
             // When
             var result = (SparqlResultSet)_connector.Query(query);
@@ -89,17 +89,30 @@ namespace Legal.Ner.Test
         }
 
         [TestMethod]
-        public void RemoteQueryTest()
+        public void RemoteQueryWithResultGraphTest()
         {
             // Given
-            SparqlRemoteEndpoint endpoint = new SparqlRemoteEndpoint(new Uri("http://dbpedia.org/sparql"));
-            string query = "DESCRIBE ?person WHERE {?person a <http://dbpedia.org/ontology/Person>} LIMIT 1";
+            SparqlRemoteEndpoint endpoint = new SparqlRemoteEndpoint(new Uri("http://es.dbpedia.org/sparql"));
+            string query = "PREFIX dbpedia: <http://es.dbpedia.org/resource/>\r\nDESCRIBE dbpedia:Ministerio_de_Vivienda_Ciudad_y_Territorio";
 
             // When
             IGraph graph = endpoint.QueryWithResultGraph(query);
 
             // Then
             Assert.IsNotNull(graph);
+        }
+
+        [TestMethod]
+        public void RemoteQueryWithResultSetTest()
+        {
+            // Given
+            SparqlRemoteEndpoint endpoint = new SparqlRemoteEndpoint(new Uri("http://es.dbpedia.org/sparql"), "http://es.dbpedia.org");
+
+            // When
+            SparqlResultSet results = endpoint.QueryWithResultSet("SELECT DISTINCT ?Concept WHERE {[] a ?Concept}");
+
+            // Then
+            Assert.IsNotNull(results);
         }
     }
 }

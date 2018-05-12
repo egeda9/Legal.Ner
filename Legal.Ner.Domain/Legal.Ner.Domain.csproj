@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Entity.cs" />
     <Compile Include="EntityBulk.cs" />
+    <Compile Include="Extensions\BaseTripleCollectionExtension.cs" />
     <Compile Include="Extensions\DataTableExtension.cs" />
     <Compile Include="Extensions\SparqlResultSetExtension.cs" />
     <Compile Include="FileContent.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace Legal.Ner.Domain.Extensions
 {
@@ -17,7 +18,11 @@ namespace Legal.Ner.Domain.Extensions
             {
                 html += "<tr>";
                 for (int j = 0; j < dataTable.Columns.Count; j++)
-                    html += "<td>" + dataTable.Rows[i][j] + "</td>";
+                {
+                    bool isUri = Uri.IsWellFormedUriString(dataTable.Rows[i][j].ToString(), UriKind.RelativeOrAbsolute);
+                    string text = isUri ? $"<td><a href=\"{dataTable.Rows[i][j]}\">{dataTable.Rows[i][j]}</a></td>" : $"<td>{dataTable.Rows[i][j]}</td>";
+                    html += text;
+                }
                 html += "</tr>";
             }
             html += "</table>";
