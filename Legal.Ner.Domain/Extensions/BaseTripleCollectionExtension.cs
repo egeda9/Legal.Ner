@@ -7,7 +7,7 @@ namespace Legal.Ner.Domain.Extensions
     {
         public static string ToHtml(this BaseTripleCollection tripleCollection)
         {
-            string html = "<table class=\"table table-striped table - bordered table-list\">";
+            string html = "<table id=\"table_result\" class=\"display\">";
 
             html += "<thead><tr>";
             html += "<th style=\"text-align: center;\">sujeto</th>";

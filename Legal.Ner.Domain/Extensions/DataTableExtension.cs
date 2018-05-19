@@ -7,7 +7,7 @@ namespace Legal.Ner.Domain.Extensions
     {
         public static string ToHtml(this DataTable dataTable)
         {
-            string html = "<table class=\"table table-striped table - bordered table-list\">";
+            string html = "<table id=\"table_result\" class=\"display\">";
 
             html += "<thead><tr>";
             for (int i = 0; i < dataTable.Columns.Count; i++)

@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Administración de Entidades Legales Colombia</title>
     @Styles.Render("~/Content/css")
-    
+
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
     <link href="/Content/landing-page.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -62,6 +63,7 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/jquery-ui")
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" charset="utf8" type="text/javascript"></script>
 @RenderSection("scripts", required: false)
 </body>
 </html>
