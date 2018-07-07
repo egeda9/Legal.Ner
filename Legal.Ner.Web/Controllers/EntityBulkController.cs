@@ -91,6 +91,8 @@ namespace Legal.Ner.Web.Controllers
             if (entityBulk == null)
                 return HttpNotFound();
 
+            TempData["EntityBulk"] = entityBulk;
+
             return View(entityBulk);
         }
 
@@ -100,7 +102,7 @@ namespace Legal.Ner.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                EntityBulk entityBulk = (EntityBulk) TempData["EntityBulk"];
 
                 return RedirectToAction("Index");
             }

@@ -1,7 +1,7 @@
-﻿@model Legal.Ner.Domain.EntityBulk
+﻿@model Legal.Ner.Domain.FileKey
 
 @{
-    ViewBag.Title = "Eliminar Entidad";
+    ViewBag.Title = "Eliminar Documento";
 }
 
 <div class="container">
@@ -9,11 +9,11 @@
         <div class="panel panel-info">
             <div class="panel-body">
                 <div>
-                    <h4>Eliminar Entidad</h4>
+                    <h4>Eliminar Documento</h4>
                     <hr />
-                    <h3>¿Está seguro de eliminar la entidad:</h3>
-                    <hr/>
-                    <h4>@Model.EntityName</h4>
+                    <h3>¿Está seguro de eliminar el documento:</h3>
+                    <hr />
+                    <h4>@Model.FileName</h4>
                     <hr />
                     @using (Html.BeginForm())
                     {
@@ -21,7 +21,7 @@
                         <div class="form-actions no-color">
                             <input type="submit" value="Eliminar" class="btn btn-default" />
                             |
-                            @Html.ActionLink("Retornar al listado", "Index", new { fileKeyId = Model.FileKey.Id })
+                            @Html.ActionLink("Retornar al listado", "Index")
                         </div>
                     }
                 </div>

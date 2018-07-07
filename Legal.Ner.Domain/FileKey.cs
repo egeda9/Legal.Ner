@@ -20,8 +20,7 @@ namespace Legal.Ner.Domain
         public string Description { get; set; }
 
         [Display(Name = "Fecha de Publicación")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}",
-            ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
 
         [Display(Name = "Número de Norma")]

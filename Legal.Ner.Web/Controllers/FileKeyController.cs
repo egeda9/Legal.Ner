@@ -36,7 +36,7 @@ namespace Legal.Ner.Web.Controllers
         {
             try
             {
-                if (file != null && file.ContentLength > 0)
+                if (file != null && file.ContentLength > 0 && Path.GetExtension(file.FileName) == ".kaf")
                 {
                     string fileName = Path.GetFileName(file.FileName);
                     _processFile.MapData(file.InputStream, fileName);
@@ -100,7 +100,11 @@ namespace Legal.Ner.Web.Controllers
         // GET: FileKey/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            FileKey fileKey = _fileKeyData.Get(id);
+            if (fileKey == null)
+                return HttpNotFound();
+
+            return View(fileKey);
         }
 
         // POST: FileKey/Delete/5

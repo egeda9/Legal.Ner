@@ -15,7 +15,7 @@
             @using (Html.BeginForm("Index", "FileKey", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <div>
-                    @Html.TextBox("file", "", new { type = "file" }) <br />
+                    @Html.TextBox("file", "", new { type = "file", accept = ".kaf" }) <br />
                     <input type="submit" value="Cargar" />
                     @*@ViewBag.Message*@
                 </div>

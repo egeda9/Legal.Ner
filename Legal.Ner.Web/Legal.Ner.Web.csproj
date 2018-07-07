@@ -307,6 +307,7 @@
     <Content Include="Views\Semantic\Index.cshtml" />
     <Content Include="Views\SparqlPredefinedNamespacePrefix\Index.cshtml" />
     <Content Include="Views\Semantic\Details.cshtml" />
+    <Content Include="Views\FileKey\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,6 +22,7 @@ namespace Legal.Ner.DataAccess.Implementations
         {
             using (IDbConnection db = _db)
             {
+                db.Open();
                 return db.Query<SparqlPredefinedNamespacePrefix>("SELECT * FROM metadata.PredefinedNamespacePrefixes").ToList();
             }
         }
