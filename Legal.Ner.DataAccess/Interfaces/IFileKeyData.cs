@@ -10,5 +10,6 @@ namespace Legal.Ner.DataAccess.Interfaces
         List<FileKey> Get(string searchString);
         FileKey Get(int id);
         void Update(FileKey fileKey);
+        void Delete(FileKey fileKey);
     }
 }

@@ -8,5 +8,6 @@ namespace Legal.Ner.DataAccess.Interfaces
         List<EntityBulk> Get(int fileKeyId, string searchString);
         EntityBulk GetByEid(string eid, int fileKeyId);
         void Update(EntityBulk entityBulk);
+        void Delete(EntityBulk entityBulk);
     }
 }

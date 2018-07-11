@@ -64,7 +64,6 @@ namespace Legal.Ner.DataAccess.Implementations
                              " ORDER BY f.Id";
 
                 files = db.Query<FileKey>(sql, new { SearchString = searchString }).ToList();
-                db.Close();
             }
             return files;
         }
@@ -86,7 +85,6 @@ namespace Legal.Ner.DataAccess.Implementations
                              " WHERE f.Id = @FileKeyId";
 
                 fileKey = db.Query<FileKey>(sql, new { FileKeyId = id }).SingleOrDefault();
-                db.Close();
             }
             return fileKey;
         }
@@ -104,7 +102,18 @@ namespace Legal.Ner.DataAccess.Implementations
                              " WHERE Id = @Id";
 
                 db.Execute(sql, new { Id = fileKey.Id, Description = fileKey.Description, DocumentTitle = fileKey.DocumentTitle, Number = fileKey.Number, ReleaseDate = fileKey.ReleaseDate });
-                db.Close();
+            }
+        }
+
+        public void Delete(FileKey fileKey)
+        {
+            using (IDbConnection db = _db)
+            {
+                db.Open();
+                string sql = "DELETE FileKey" +
+                             " WHERE Id = @Id";
+
+                db.Execute(sql, new { Id = fileKey.Id });
             }
         }
     }

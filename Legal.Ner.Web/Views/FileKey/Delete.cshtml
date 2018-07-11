@@ -18,12 +18,25 @@
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.HiddenFor(x => x.Description)
+                        @Html.HiddenFor(x => x.DocumentTitle)
+                        @Html.HiddenFor(x => x.FileName)
+                        @Html.HiddenFor(x => x.Number)
+                        @Html.HiddenFor(x => x.ReleaseDate)
+                        @Html.HiddenFor(x => x.UploadDate)
+
                         <div class="form-actions no-color">
                             <input type="submit" value="Eliminar" class="btn btn-default" />
                             |
                             @Html.ActionLink("Retornar al listado", "Index")
                         </div>
                     }
+                </div>
+                <hr />
+                <div class="form-group">
+                    <span>@ViewBag.ErrorMessage</span>
                 </div>
             </div>
         </div>

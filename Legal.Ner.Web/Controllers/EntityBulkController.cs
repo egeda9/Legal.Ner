@@ -89,22 +89,41 @@ namespace Legal.Ner.Web.Controllers
         {
             EntityBulk entityBulk =_entityBulkData.GetByEid(eid, fileKeyId);
             if (entityBulk == null)
+            {
                 return HttpNotFound();
-
-            TempData["EntityBulk"] = entityBulk;
+            }
 
             return View(entityBulk);
         }
 
         // POST: EntityBulk/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(FormCollection collection)
         {
             try
             {
-                EntityBulk entityBulk = (EntityBulk) TempData["EntityBulk"];
+                EntityBulk entityBulk = new EntityBulk
+                {
+                    FileKey = new FileKey
+                    {
+                        Id = Convert.ToInt32(collection["FileKey.Id"])
+                    },
+                    EntityName = collection["EntityName"],
+                    Added = Convert.ToBoolean(collection["Added"].Split(',')[0]),
+                    EntityType = collection["EntityType"],
+                    Eid = collection["Eid"]
+                };
 
-                return RedirectToAction("Index");
+                ViewBag.ErrorMessage = string.Empty;
+
+                if (entityBulk.Added)
+                {
+                    ViewBag.ErrorMessage = $"No se puede eliminar la entidad {entityBulk.EntityName}. Ya ha sido agregada a la ontología";
+                    return View(entityBulk);
+                }
+
+                _entityBulkData.Delete(entityBulk);
+                return RedirectToAction("Index", new { fileKeyId = entityBulk.FileKey.Id });
             }
             catch
             {

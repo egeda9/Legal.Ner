@@ -44,7 +44,6 @@ namespace Legal.Ner.DataAccess.Implementations
                              " ORDER BY CAST(SUBSTRING(e.Eid, 2, 10) AS INT)";
 
                 entities = db.Query<EntityBulk, FileKey, EntityBulk>(sql, (e, f) => { e.FileKey = f; return e; }, new { FileKeyId = fileKeyId, SearchString = searchString }).ToList();
-                db.Close();
             }
             return entities;
         }
@@ -74,7 +73,6 @@ namespace Legal.Ner.DataAccess.Implementations
                              " ORDER BY CAST(SUBSTRING(e.Eid, 2, 10) AS INT)";
 
                 entity = db.Query<EntityBulk, FileKey, EntityBulk>(sql, (e, f) => { e.FileKey = f; return e; }, new { FileKeyId = fileKeyId, Eid = eid }).SingleOrDefault();
-                db.Close();
             }
             return entity;
         }
@@ -92,7 +90,19 @@ namespace Legal.Ner.DataAccess.Implementations
                              " AND Eid = @Eid";
 
                 db.Execute(sql, new { FileKeyId = entityBulk.FileKey.Id, Eid = entityBulk.Eid, EntityType = entityBulk.EntityType, EntityName = entityBulk.EntityName, Added = entityBulk.Added });
-                db.Close();
+            }
+        }
+
+        public void Delete(EntityBulk entityBulk)
+        {
+            using (IDbConnection db = _db)
+            {
+                db.Open();
+                string sql = "DELETE EntityBulk" +
+                             " WHERE Eid = @Eid" +
+                             " AND FileKey_Id = @FileKeyId";
+
+                db.Execute(sql, new { FileKeyId = entityBulk.FileKey.Id, Eid = entityBulk.Eid });
             }
         }
     }

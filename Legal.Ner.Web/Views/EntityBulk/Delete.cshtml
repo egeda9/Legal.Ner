@@ -12,18 +12,29 @@
                     <h4>Eliminar Entidad</h4>
                     <hr />
                     <h3>¿Está seguro de eliminar la entidad:</h3>
-                    <hr/>
+                    <hr />
                     <h4>@Model.EntityName</h4>
                     <hr />
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Delete", "EntityBulk", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(x => x.FileKey.Id)
+                        @Html.HiddenFor(x => x.Eid)
+                        @Html.HiddenFor(x => x.Added)
+                        @Html.HiddenFor(x => x.EntityName)
+                        @Html.HiddenFor(x => x.EntityType)
+
                         <div class="form-actions no-color">
                             <input type="submit" value="Eliminar" class="btn btn-default" />
                             |
                             @Html.ActionLink("Retornar al listado", "Index", new { fileKeyId = Model.FileKey.Id })
                         </div>
                     }
+                </div>
+                <hr />
+                <div class="form-group">
+                    <span>@ViewBag.ErrorMessage</span>
                 </div>
             </div>
         </div>
