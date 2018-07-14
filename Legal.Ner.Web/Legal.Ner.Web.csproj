@@ -257,10 +257,13 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\banner-bg.jpg" />
+    <Content Include="Images\clasificar.jpg" />
     <Content Include="Images\dog.png" />
     <Content Include="Images\intro-bg.jpg" />
     <Content Include="Images\ipad.png" />
+    <Content Include="Images\legal.jpg" />
     <Content Include="Images\phones.png" />
+    <Content Include="Images\unsplash.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\graph.js" />

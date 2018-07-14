@@ -11,7 +11,7 @@ namespace Legal.Ner.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Administración dy búsqueda de conceptos jurídicos con alcance semántico.";
+            ViewBag.Message = "Administración y búsqueda de conceptos jurídicos con alcance semántico.";
 
             return View();
         }
