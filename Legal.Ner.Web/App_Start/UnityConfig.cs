@@ -1,12 +1,12 @@
-using System.Web.Mvc;
+using Legal.Ner.Business.Implementations;
 using Legal.Ner.Business.Interfaces;
-using Microsoft.Practices.Unity;
-using Unity.Mvc5;
 using Legal.Ner.DataAccess.Implementations;
 using Legal.Ner.DataAccess.Interfaces;
-using Legal.Ner.Business.Implementations;
 using Legal.Ner.Log;
 using Legal.Ner.Log.Implementations;
+using System.Web.Mvc;
+using Unity;
+using Unity.Mvc5;
 
 namespace Legal.Ner.Web
 {
@@ -15,10 +15,11 @@ namespace Legal.Ner.Web
         public static void RegisterComponents()
         {
 			var container = new UnityContainer();
-            
+
             // register all your components with the container here
             // it is NOT necessary to register your controllers
-            
+
+            // e.g. contaz|iner.RegisterType<ITestService, TestService>();
             container.RegisterType<IEntityBulkData, EntityBulkData>();
             container.RegisterType<IEntityData, EntityData>();
             container.RegisterType<ITermData, TermData>();
