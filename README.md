@@ -95,6 +95,10 @@ We use [GitHub](https://github.com) for versioning. For the versions available, 
 
 * **Juan Fernando Rojas Moreno** - *Initial work* - [egeda9](https://github.com/egeda9)
 
+## Mentor
+
+* **Professor: Jorge mario Calvo Londoño**
+
 ## License
 
 License of use and distribution according to the academic intellectual property license of the Universidad Distrital Francisco José de Caldas
