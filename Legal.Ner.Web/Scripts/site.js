@@ -1,6 +1,10 @@
 ﻿$(function() {
     // This will make every element with the class "date-picker" into a DatePicker element
-    $(".date-picker").datepicker();
+    $(".date-picker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy/mm/dd"
+    });
 });
 
 $(document).ready(function () {
