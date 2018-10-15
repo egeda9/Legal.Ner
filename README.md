@@ -73,7 +73,7 @@ Example:
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Additional notes about how to deploy this on a live system
 
 ```
 jena fuseki folder contains the configuration settings in: ...\run\configuration. Be sure to change the setting: tdb:location in the ttl file to your local database folder.
