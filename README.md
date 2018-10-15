@@ -97,7 +97,7 @@ We use [GitHub](https://github.com) for versioning. For the versions available, 
 
 ## Mentor
 
-* **Professor: Jorge mario Calvo Londoño**
+* **Professor: Jorge Mario Calvo Londoño**
 
 ## License
 
