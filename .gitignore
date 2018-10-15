@@ -206,3 +206,5 @@ $RECYCLE.BIN/
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+/jena/apache-jena-fuseki-3.7.0/run/system/tdb.lock
+/Legal.Ner.Web/Properties/PublishProfiles/FolderProfile.pubxml
